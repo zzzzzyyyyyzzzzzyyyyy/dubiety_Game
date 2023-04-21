@@ -6,14 +6,15 @@ public class Ui{
     Manager m;
     JFrame window;
     JTextArea textArea;
-    public JPanel bgPanel[] = new JPanel[5];//num for num of BG
-    public JLabel bgLabel[] = new JLabel[5];
+    public JPanel bgPanel[] = new JPanel[9];//num for num of BG
+    public JLabel bgLabel[] = new JLabel[9];
     public JButton con = new JButton("Continue");
 
     public Ui(Manager m){
         this.m = m;
         createMain();
         createBG();
+
         window.setVisible(true);
     }
 
@@ -64,4 +65,30 @@ public class Ui{
         con.setVisible(bool);
         window.add(con);       
     }
+
+    /* 
+    public void icons(String iden){
+        if(iden.equals("paper")){
+            //bgPanel[2] = new JPanel();
+            //bgPanel[2].setBounds(10,10,50,50);
+        }
+        else if(iden.equals("trophy")){
+
+            System.out.println("here");
+
+            bgPanel[5] = new JPanel();
+            bgPanel[5].setBounds(50,10,100,100);
+            bgPanel[5].setBackground(null);
+            bgPanel[5].setLayout(null);
+            window.add(bgPanel[5]);
+
+            bgLabel[5] = new JLabel();
+            bgLabel[5].setBounds(50,10,100,100);
+
+            ImageIcon trophy = new ImageIcon(getClass().getResource("Icons/trophy.png"));
+            bgLabel[5].setIcon(trophy);
+            bgPanel[5].add(bgLabel[5]);
+        }
+    }
+    */
 }
