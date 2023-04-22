@@ -52,7 +52,7 @@ public class Ui{
 
         //ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("BG/club.jpeg"));
         //ImageIcon bgIcon = new ImageIcon(getClass().getResource("dubiety_Game/BG/club.jpeg"));
-        ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/club.jpg"));
+        ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/dark.png"));
         bgLabel[1].setIcon(bgIcon);
         bgPanel[1].add(bgLabel[1]);
     }
