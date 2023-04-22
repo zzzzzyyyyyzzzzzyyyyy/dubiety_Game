@@ -5,7 +5,10 @@ import java.awt.*;
 public class Ui{
     Manager m;
     JFrame window;
-    JTextArea textArea;
+    JTextArea inputText, textArea;
+    JPanel inputPanel;
+    JTextField nameIn;
+    JButton enter;
     public JPanel bgPanel[] = new JPanel[9];//num for num of BG
     public JLabel bgLabel[] = new JLabel[9];
     public JButton con = new JButton("Continue");
@@ -19,7 +22,6 @@ public class Ui{
     }
 
     public void createMain(){
-        Color textBG = new Color(5, 16, 92);
         window = new JFrame();
         window.setSize(700, 1000);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,7 +29,37 @@ public class Ui{
         window.setLayout(null);
         window.setResizable(false);
 
-        textArea = new JTextArea("The Line of Dubiety is not really a line. It’s a hypothetical wall that separates the real world from a magical alternate world where one can encounter unfathomable beings and get trapped within endless corridors. This alternate world can be accessed through portals, but only by those who are authorized to. At least that is how it’s supposed to be.");
+        inputText = new JTextArea("Input your name:");
+        inputText.setBounds(270, 300, 400, 100);
+        inputText.setBackground(Color.black);
+        inputText.setForeground(Color.white);
+        inputText.setEditable(false);
+        inputText.setLineWrap(true);
+        inputText.setWrapStyleWord(true);
+        inputText.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
+        window.add(inputText);
+
+        inputPanel = new JPanel();
+        inputPanel.setBounds(220, 300, 400, 100);
+        inputPanel.setBackground(Color.yellow);
+        inputPanel.setLayout(new GridLayout(1,2));
+
+        nameIn = new JTextField();
+        inputPanel.add(nameIn);
+
+        enter = new JButton();
+        enter.setBackground(Color.yellow);
+        enter.setForeground(Color.black);
+        inputPanel.add(enter);
+        
+        window.add(inputPanel);
+
+
+    }
+
+    public void createMainContinue(){
+        Color textBG = new Color(5, 16, 92);
+        textArea = new JTextArea("");
         textArea.setBounds(10, 810, 670, 140);
         textArea.setBackground(textBG);
         textArea.setForeground(Color.white);
@@ -52,7 +84,7 @@ public class Ui{
 
         //ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("BG/club.jpeg"));
         //ImageIcon bgIcon = new ImageIcon(getClass().getResource("dubiety_Game/BG/club.jpeg"));
-        ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/club.jpg"));
+        ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/dark.jpg"));
         bgLabel[1].setIcon(bgIcon);
         bgPanel[1].add(bgLabel[1]);
     }
