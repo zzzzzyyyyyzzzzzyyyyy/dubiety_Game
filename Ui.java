@@ -1,6 +1,8 @@
 import javax.swing.*; 
 import javax.swing.ImageIcon; 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ui{
     Manager m;
@@ -9,6 +11,9 @@ public class Ui{
     JPanel inputPanel;
     JTextField nameIn;
     JButton enter;
+    InputHandler inHandler = new InputHandler();
+    String name;
+
     public JPanel bgPanel[] = new JPanel[9];//num for num of BG
     public JLabel bgLabel[] = new JLabel[9];
     public JButton con = new JButton("Continue");
@@ -40,36 +45,24 @@ public class Ui{
         window.add(inputText);
 
         inputPanel = new JPanel();
-        inputPanel.setBounds(220, 300, 400, 100);
+        inputPanel.setBounds(150, 400, 400, 50);
         inputPanel.setBackground(Color.yellow);
         inputPanel.setLayout(new GridLayout(1,2));
 
         nameIn = new JTextField();
+        inputPanel.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
         inputPanel.add(nameIn);
 
-        enter = new JButton();
+        enter = new JButton("Enter");
         enter.setBackground(Color.yellow);
         enter.setForeground(Color.black);
+        enter.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
+        enter.addActionListener(inHandler);
         inputPanel.add(enter);
         
         window.add(inputPanel);
 
 
-    }
-
-    public void createMainContinue(){
-        Color textBG = new Color(5, 16, 92);
-        textArea = new JTextArea("");
-        textArea.setBounds(10, 810, 670, 140);
-        textArea.setBackground(textBG);
-        textArea.setForeground(Color.white);
-        textArea.setEditable(false);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
-        window.add(textArea);
-
-        conButton(true);
     }
 
     public void createBG(){
@@ -87,6 +80,35 @@ public class Ui{
         ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/dark.jpg"));
         bgLabel[1].setIcon(bgIcon);
         bgPanel[1].add(bgLabel[1]);
+    }
+
+    public class InputHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            if(nameIn.getText().length() >= 10){
+                inputText.setText("Please make sure your name is less than 10 characters.");
+            }
+            else{
+                name = nameIn.getText();
+                inputText.setText("Loading...");
+                //add here that it should move to next screen. //8380
+            }
+            
+        }
+    }
+
+    public void createMainContinue(){
+        Color textBG = new Color(5, 16, 92);
+        textArea = new JTextArea("");
+        textArea.setBounds(10, 810, 670, 140);
+        textArea.setBackground(textBG);
+        textArea.setForeground(Color.white);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
+        window.add(textArea);
+
+        conButton(true);
     }
 
     public void conButton(boolean bool){
