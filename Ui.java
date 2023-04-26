@@ -89,8 +89,11 @@ public class Ui{
             }
             else{
                 name = nameIn.getText();
-                inputText.setText("Loading...");
+                inputText.setText("First challenge:\nfind the button.");
+
+                inputPanel.setVisible(false);
                 //add here that it should move to next screen. //8380
+                createMainContinue();
             }
             
         }
@@ -116,7 +119,7 @@ public class Ui{
         con.setBackground(Color.BLACK);
         con.setForeground(Color.CYAN);
         con.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
-        con.setVisible(bool);
+        con.setVisible(bool); 
         window.add(con);       
     }
 
