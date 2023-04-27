@@ -12,6 +12,17 @@ public class Ui{
     JTextField nameIn;
     JButton enter;
     InputHandler inHandler = new InputHandler();
+
+    /*
+     * enter.addActionListener(inHandler);
+     * there is a button enter
+     * add this line for continue button
+     * make change name from inHandler. see if allowed to
+     * I think addition should be in conButton and InputHandler
+     * 
+     * also test in input handler can handle being in a different file, maybe
+     */
+
     String name;
 
     public JPanel bgPanel[] = new JPanel[9];//num for num of BG
@@ -62,7 +73,6 @@ public class Ui{
         
         window.add(inputPanel);
 
-
     }
 
     public void createBG(){
@@ -80,23 +90,6 @@ public class Ui{
         ImageIcon bgIcon = new ImageIcon(getClass().getResource("BG/dark.jpg"));
         bgLabel[1].setIcon(bgIcon);
         bgPanel[1].add(bgLabel[1]);
-    }
-
-    public class InputHandler implements ActionListener{
-        public void actionPerformed(ActionEvent event){
-            if(nameIn.getText().length() >= 10){
-                inputText.setText("Please make sure your name is less than 10 characters.");
-            }
-            else{
-                name = nameIn.getText();
-                inputText.setText("First challenge:\nfind the button.");
-
-                inputPanel.setVisible(false);
-                //add here that it should move to next screen. //8380
-                createMainContinue();
-            }
-            
-        }
     }
 
     public void createMainContinue(){
@@ -121,6 +114,32 @@ public class Ui{
         con.setFont(new Font("DejaVu Serif", Font.PLAIN, 20));
         con.setVisible(bool); 
         window.add(con);       
+    }
+
+    public String onward = "";
+    ImageIcon back = new ImageIcon(getClass().getResource("BG/club.jpg"));
+    public class InputHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            if(nameIn.getText().length() >= 10 && onward.equals("")){
+                inputText.setText("Please make sure your name is less than 10 characters.");
+            }
+            else if(nameIn.getText().length() < 10 && onward.equals("")){
+                name = nameIn.getText();
+                inputText.setText("First challenge:\nfind the button.");
+
+                onward = "nameIn";
+
+                inputPanel.setVisible(false);
+                //add here that it should move to next screen. //8380
+                createMainContinue();
+            }
+            else if(onward.equals("nameIn")){
+                System.out.println("test");
+                bgLabel[1].setIcon(back);
+                bgPanel[1].add(bgLabel[1]);
+            }
+            
+        }
     }
 
     /* 
