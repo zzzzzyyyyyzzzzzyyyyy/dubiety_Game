@@ -300,6 +300,7 @@ public class Ui{
                         textArea.setText("What would you like to check?\n0-Marionette\n1-Cards in hand\n2-Table\n3-Box\n4-Go Left");
                         String check = choice.getText();
                         System.out.println("in r room");
+                        System.out.println("check: " + check);
                         if(what == choose && check.equals("4")){
                             System.out.println("should change");
                             bgLabel[1].setIcon(casinoL);
